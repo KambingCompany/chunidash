@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfnv32cm4rhn"]
+
+[ext_resource type="PackedScene" uid="uid://bodo187lpv88r" path="res://CharacterController.tscn" id="1_birvu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bc1v6"]
+size = Vector3(100, 100, 1)
+
+[node name="MainScene" type="Node2D"]
+
+[node name="CharacterController" parent="." instance=ExtResource("1_birvu")]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(1, -139)
+scale = Vector2(3.03, 1)
+mesh = SubResource("BoxMesh_bc1v6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
