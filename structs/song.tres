@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://i2ddxqhr2tsn"]
+
+[ext_resource type="Script" path="res://structs/song.gd" id="1_f2w6p"]
+
+[resource]
+script = ExtResource("1_f2w6p")
+artist = ""
+title = ""
+rhythm = PackedInt32Array()

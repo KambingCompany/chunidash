@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8bchs71bkwxr"]
+
+[ext_resource type="Script" path="res://scenes/RhythmBar.gd" id="1_tvjei"]
+
+[node name="RhythmBar" type="Node2D"]
+script = ExtResource("1_tvjei")
+
+[node name="Line2D" type="Line2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.490196)
+points = PackedVector2Array(0, 0, 0, 720)
+width = 5.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
