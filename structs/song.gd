@@ -5,4 +5,4 @@ class_name Song
 @export var title: String
 @export var rhythm: PackedInt32Array
 @export var audio: AudioStream
-@export var osb_path: String
+@export var base_dir: String
