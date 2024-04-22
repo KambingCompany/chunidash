@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://2gyisctnoeky"]
+[gd_scene load_steps=5 format=3 uid="uid://2gyisctnoeky"]
 
 [ext_resource type="Script" path="res://screens/Level.gd" id="1_pmarg"]
 [ext_resource type="PackedScene" uid="uid://balihlspmape" path="res://controllers/AudioController.tscn" id="2_i3x5q"]
 [ext_resource type="PackedScene" uid="uid://c8bchs71bkwxr" path="res://scenes/RhythmBar.tscn" id="3_tprol"]
+[ext_resource type="PackedScene" uid="uid://cmolvyfrydie0" path="res://controllers/ProjectileController.tscn" id="4_4je6g"]
 
 [node name="Level" type="Control"]
 layout_mode = 3
@@ -19,5 +20,8 @@ script = ExtResource("1_pmarg")
 
 [node name="RhythmBar" parent="." instance=ExtResource("3_tprol")]
 position = Vector2(640, -5)
+
+[node name="ProjectileController" parent="." instance=ExtResource("4_4je6g")]
+layout_mode = 1
 
 [connection signal="note_judged" from="RhythmBar" to="." method="_on_rhythm_bar_note_judged"]

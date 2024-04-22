@@ -87,7 +87,7 @@ func move_notes():
 			note.visible = true
 
 		var orig: Vector2 = note.position
-		note.position = Vector2(orig.x, 605 * (1.0 - (note.time - current_time) / MS_WINDOW))
+		note.position = Vector2(orig.x, 600 * (1.0 - (note.time - current_time) / MS_WINDOW))
 		i += 1
 
 func flash_color(color: Color):

@@ -1,6 +1,19 @@
 extends Control
 
 @export var song: Song
+@onready var projectile_controller: ProjectileController = $ProjectileController
+var projectile = preload("res://scenes/Projectile.tscn")
+
+func create_projectile(commands: Array[Command], start_position: Vector2, is_ghost: bool, texture: Texture):
+	var p = projectile.instantiate()
+	p.commands = commands
+	p.start_position = start_position
+	p.is_ghost = is_ghost
+	p.start_time = commands[0].start_time
+	p.texture = texture
+	for command in commands:
+		command.object = p
+	return p
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,11 +26,14 @@ func _ready() -> void:
 	$AudioController.set_audio(song.audio)
 	$AudioController.start()
 	$RhythmBar.load(song.rhythm)
+	# TODO: Add bullets here
+	projectile_controller.projectiles = []
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$RhythmBar.current_time = $AudioController.current_time
+	projectile_controller.current_time = $AudioController.current_time
 
 
 func _on_rhythm_bar_note_judged(judgement: int) -> void:
