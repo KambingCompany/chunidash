@@ -1,14 +1,17 @@
-extends Object
+extends RefCounted
 
-func parse():
+class_name OsbParser
+
+static func parse(osb_path: String) -> Array[Sprite]:
 	print("Begin parsing")
 	var start_time = Time.get_ticks_msec()
+	print(osb_path)
 
-	var file = FileAccess.open("./space.osb", FileAccess.READ)
+	var file = FileAccess.open(osb_path, FileAccess.READ)
 	var content = file.get_as_text().split("\n")
 
 	var sprite: Sprite
-	var sprites: Array = []
+	var sprites: Array[Sprite] = []
 
 	for line_idx in content.size():
 		var line = content[line_idx]
@@ -17,7 +20,7 @@ func parse():
 		
 		# commands
 		if line.begins_with(" "):
-			var command: Command
+			var command: SpriteCommand
 			var split: PackedStringArray = line.strip_edges().split(",")
 
 			if split.size() < 5:
@@ -156,7 +159,7 @@ func parse():
 			var endTime: int = int(split[3])
 			var params: Array = split.slice(4, split.size())
 
-			command = Command.new(type, easing, startTime, endTime, params)
+			command = SpriteCommand.new(type, easing, startTime, endTime, params)
 			sprite.commands.append(command)
 		# objects
 		else:
@@ -227,35 +230,14 @@ func parse():
 	
 	print("Done parsing")
 	print("Time taken: " + str(Time.get_ticks_msec() - start_time) + "ms")
+	return sprites
+
 enum Layer {Background, Fail, Pass, Foreground}
 enum Origin {TopLeft, Centre, CentreLeft, TopRight, BottomCentre, TopCentre, Custom, CentreRight, BottomLeft, BottomRight}
-
-class Sprite:
-	var layer: Layer
-	var origin: Origin
-	var filepath: String
-	var x: int
-	var y: int
-	var commands: Array
-
-	func _init(startLayer: Layer, startOrigin: Origin, startFilepath: String, startX: int, startY: int):
-		layer = startLayer
-		origin = startOrigin
-		filepath = startFilepath
-		x = startX
-		y = startY
-	
-	func _to_string() -> String:
-		var ret: String = "Sprite: " + str(Layer.keys()[layer]) + ", " + str(Origin.keys()[origin]) + ", " + filepath + ", " + str(x) + ", " + str(y)
-		for command in commands:
-			ret += "\n	" + command.to_string()
-		return ret
-
 enum CommandType {Fade, Move, MoveX, MoveY, Scale, Vector, Rotate, Color}
-
 enum Easing {Linear, In, Out}
 # enum Easing {Linear, In, Out, QuadIn, QuadOut, QuadInOut, CubicIn, CubicOut, CubicInOut, QuartIn, QuartOut, QuartInOut, QuintIn, QuintOut, QuintInOut, SineIn, SineOut, SineInOut, ExpoIn, ExpoOut, ExpoInOut, CircIn, CircOut, CircInOut, ElasticIn, ElasticOut, ElasticHalfOut, ElasticQuarterOut, ElasticInOut, BackIn, BackOut, BackInOut, BounceIn, BounceOut, BounceInOut}
-class Command:
+class SpriteCommand:
 	var type: CommandType
 	var easing: Easing
 	var startTime: int
@@ -271,3 +253,25 @@ class Command:
 
 	func _to_string() -> String:
 		return "Command: " + str(CommandType.keys()[type]) + ", " + str(Easing.keys()[easing]) + ", " + str(startTime) + ", " + str(endTime) + ", " + str(params)
+
+class Sprite:
+	var layer: Layer
+	var origin: Origin
+	var filepath: String
+	var x: int
+	var y: int
+	var commands: Array[SpriteCommand]
+
+	func _init(startLayer: Layer, startOrigin: Origin, startFilepath: String, startX: int, startY: int):
+		layer = startLayer
+		origin = startOrigin
+		filepath = startFilepath
+		x = startX
+		y = startY
+	
+	func _to_string() -> String:
+		var ret: String = "Sprite: " + str(Layer.keys()[layer]) + ", " + str(Origin.keys()[origin]) + ", " + filepath + ", " + str(x) + ", " + str(y)
+		for command in commands:
+			ret += "\n	" + command.to_string()
+		return ret
+
