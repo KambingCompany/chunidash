@@ -18,11 +18,22 @@ static func create_colliders(texture: Texture):
 	bitmap.create_from_image_alpha(texture.get_image())
 
 	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
+	var dimension = bitmap.get_size()
 
 	for polygon in polygons:
+		# Recenter the polygons, current is offsetted
+		var new_polygons: PackedVector2Array = []
+		for dot in polygon:
+			new_polygons.append(
+				Vector2(
+					float(dot.x) - (float(dimension.x) / 2.0),
+					float(dot.y) - (float(dimension.y) / 2.0))
+			)
+
 		var collider = CollisionPolygon2D.new()
-		collider.polygon = polygon
+		collider.polygon = new_polygons
 		colliders.append(collider)
+
 	return colliders
 
 func _on_area_2d_body_entered(body):
