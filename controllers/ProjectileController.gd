@@ -33,5 +33,6 @@ func _process_commands():
 			add_child(cmd.object)
 			
 		cmd.execute(current_time)
-		cmd.executed = true
+		if current_time > cmd.end_time:
+			cmd.executed = true
 		i -= 1
