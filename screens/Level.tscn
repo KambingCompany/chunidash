@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://screens/Level.gd" id="1_pmarg"]
 [ext_resource type="PackedScene" uid="uid://balihlspmape" path="res://controllers/AudioController.tscn" id="2_i3x5q"]
-[ext_resource type="PackedScene" uid="uid://c8bchs71bkwxr" path="res://scenes/RhythmBar.tscn" id="3_tprol"]
 [ext_resource type="PackedScene" uid="uid://cmolvyfrydie0" path="res://controllers/ProjectileController.tscn" id="4_4je6g"]
+[ext_resource type="PackedScene" uid="uid://br13ye1sj0lie" path="res://scenes/PlayerContainer.tscn" id="5_l3y2x"]
 
 [node name="Level" type="Control"]
 layout_mode = 3
@@ -18,10 +18,19 @@ script = ExtResource("1_pmarg")
 
 [node name="AudioController" parent="." instance=ExtResource("2_i3x5q")]
 
-[node name="RhythmBar" parent="." instance=ExtResource("3_tprol")]
-position = Vector2(640, -5)
-
 [node name="ProjectileController" parent="." instance=ExtResource("4_4je6g")]
 layout_mode = 1
 
-[connection signal="note_judged" from="RhythmBar" to="." method="_on_rhythm_bar_note_judged"]
+[node name="PlayerContainer" parent="." instance=ExtResource("5_l3y2x")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -586.0
+offset_top = -272.0
+offset_right = 586.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0

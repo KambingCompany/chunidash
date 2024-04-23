@@ -2,6 +2,7 @@ extends Control
 
 @export var song: Song
 @onready var projectile_controller: ProjectileController = $ProjectileController
+@onready var rhythm_bar: RhythmBar = $PlayerContainer/MarginContainer/Container/CharacterController/RhythmBar
 
 var projectile = preload("res://scenes/Projectile.tscn")
 var converter = OsbConverter.new()
@@ -26,22 +27,24 @@ func _ready() -> void:
 	song.title = "carnation"
 	song.base_dir = "spaceinvaders"
 	
-	projectile_controller.projectiles = converter.parse_osb_to_projectiles(song.base_dir)
+	rhythm_bar.note_judged.connect(_on_rhythm_bar_note_judged)
+	
+	projectile_controller.command_queue = converter.parse_osb_to_projectiles(song.base_dir)
 	$AudioController.set_audio(song.audio)
 	$AudioController.start()
-	$RhythmBar.load(song.rhythm)
+	rhythm_bar.load(song.rhythm)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$RhythmBar.current_time = $AudioController.current_time
+	rhythm_bar.current_time = $AudioController.current_time
 	projectile_controller.current_time = $AudioController.current_time
 
 
 func _on_rhythm_bar_note_judged(judgement: int) -> void:
 	if judgement == RhythmBar.Judgement.GREAT:
-		$RhythmBar.flash_color(Color.SKY_BLUE)
+		rhythm_bar.flash_color(Color.SKY_BLUE)
 	elif judgement == RhythmBar.Judgement.GOOD:
-		$RhythmBar.flash_color(Color.GREEN)
+		rhythm_bar.flash_color(Color.GREEN)
 	elif judgement == RhythmBar.Judgement.MISS:
-		$RhythmBar.flash_color(Color.RED)
+		rhythm_bar.flash_color(Color.RED)
