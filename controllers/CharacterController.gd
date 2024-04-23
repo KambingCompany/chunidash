@@ -7,7 +7,8 @@ extends CharacterBody2D
 @export var ROW_SWITCH_SPEED = 8
 
 @export var ROWS = 1
-@export var GRID_SIZE = 48
+@export var GRID_SIZE = 64
+@export var INITIAL_Y = 0
 
 var current_row = 0
 
@@ -43,7 +44,7 @@ func handle_vertical_movement():
 	if Input.is_action_just_pressed("down"):
 		current_row = clamp(current_row + 1, -ROWS, ROWS)
 	
-	position.y = move_toward(position.y, GRID_SIZE * current_row, ROW_SWITCH_SPEED)
+	position.y = move_toward(position.y, INITIAL_Y + GRID_SIZE * current_row, ROW_SWITCH_SPEED)
 
 func _physics_process(delta):
 	handle_vertical_movement()
