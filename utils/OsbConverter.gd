@@ -119,7 +119,7 @@ func parse_osb_to_projectiles(base_dir: String):
 		)
 		if not is_ghost:
 			for collider in collider_cache[path]:
-				p.add_child(collider.duplicate())
+				p.get_node("Area2D").add_child(collider.duplicate())
 
 		commands_queue.append_array(commands)
 	
