@@ -56,6 +56,9 @@ func _input(event: InputEvent):
 		if key_event.keycode & KEY_CODE_MASK:
 			handle_input()
 
+func _ready() -> void:
+	note_judged.connect(GameState.process_judgement)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	move_notes()

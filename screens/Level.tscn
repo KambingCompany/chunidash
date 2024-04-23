@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2gyisctnoeky"]
+[gd_scene load_steps=6 format=3 uid="uid://2gyisctnoeky"]
 
 [ext_resource type="Script" path="res://screens/Level.gd" id="1_pmarg"]
 [ext_resource type="PackedScene" uid="uid://balihlspmape" path="res://controllers/AudioController.tscn" id="2_i3x5q"]
 [ext_resource type="PackedScene" uid="uid://cmolvyfrydie0" path="res://controllers/ProjectileController.tscn" id="4_4je6g"]
 [ext_resource type="PackedScene" uid="uid://br13ye1sj0lie" path="res://scenes/PlayerContainer.tscn" id="5_l3y2x"]
+[ext_resource type="PackedScene" uid="uid://buv6i3rjcas0a" path="res://scenes/HUDContainer.tscn" id="5_oryv4"]
 
 [node name="Level" type="Control"]
 layout_mode = 3
@@ -34,3 +35,6 @@ offset_right = 405.0
 offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="HUDContainer" parent="." instance=ExtResource("5_oryv4")]
+layout_mode = 1

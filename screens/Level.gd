@@ -33,7 +33,9 @@ func _ready() -> void:
 	$AudioController.set_audio(song.audio)
 	$AudioController.start()
 	rhythm_bar.load(song.rhythm)
-
+	# Reset game state on start
+	GameState.reset_game_state()
+	GameState.on_death.connect(on_player_death)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -48,3 +50,6 @@ func _on_rhythm_bar_note_judged(judgement: int) -> void:
 		rhythm_bar.flash_color(Color.GREEN)
 	elif judgement == RhythmBar.Judgement.MISS:
 		rhythm_bar.flash_color(Color.RED)
+
+func on_player_death() -> void:
+	pass

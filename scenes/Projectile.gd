@@ -11,8 +11,7 @@ func _ready() -> void:
 	self.position = start_position
 	if is_ghost:
 		return
-
-
+	
 static func create_colliders(texture: Texture):
 	var colliders: Array[CollisionPolygon2D] = []
 	var bitmap = BitMap.new()
@@ -26,3 +25,8 @@ static func create_colliders(texture: Texture):
 		colliders.append(collider)
 	return colliders
 
+func _on_area_2d_body_entered(body):
+	GameState.colliding = true
+
+func _on_area_2d_body_exited(body):
+	GameState.colliding = false
