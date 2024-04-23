@@ -5,7 +5,6 @@ class_name OsbParser
 static func parse(osb_path: String) -> Array[Sprite]:
 	print("Begin parsing")
 	var start_time = Time.get_ticks_msec()
-	print(osb_path)
 
 	var file = FileAccess.open(osb_path, FileAccess.READ)
 	var content = file.get_as_text().split("\n")
@@ -156,9 +155,11 @@ static func parse(osb_path: String) -> Array[Sprite]:
 					assert(false, "unknown easing: " + e)
 			
 			var startTime: int = int(split[2])
+			if split[3] == "":
+				split[3] = split[2]
 			var endTime: int = int(split[3])
 			var params: Array = split.slice(4, split.size())
-
+			
 			command = SpriteCommand.new(type, easing, startTime, endTime, params)
 			sprite.commands.append(command)
 		# objects

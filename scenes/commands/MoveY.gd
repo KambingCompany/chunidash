@@ -1,14 +1,14 @@
 extends Command
 
-class_name Move
+class_name MoveY
 
-var start: Vector2
-var end: Vector2
+var start: float
+var end: float
 
 func _init(
 		object: Node2D,
 		start_t: int, end_t: int,
-		start: Vector2, end: Vector2
+		start: float, end: float
 	):
 	super(object, start_t, end_t)
 	self.start = start
@@ -17,4 +17,4 @@ func _init(
 func execute(time: int):
 	var percentage = get_duration_percentage(time)
 	var current = start + percentage * (end - start)
-	object.position = current
+	object.position = Vector2(object.position.x, current)
