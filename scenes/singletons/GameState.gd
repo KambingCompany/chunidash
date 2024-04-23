@@ -71,6 +71,3 @@ func _process(delta):
 		
 	if iframe > 0:
 		iframe -= delta * 1000
-		
-	print(iframe)
-	
