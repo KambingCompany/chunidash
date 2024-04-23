@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var GRID_SIZE = 64
 @export var INITIAL_Y = 0
 
+var bounds = Vector2(0, 0)
 var current_row = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -48,5 +49,11 @@ func handle_vertical_movement():
 
 func _physics_process(delta):
 	handle_vertical_movement()
-	handle_horizontal_movement(delta)
+	handle_horizontal_movement(delta)		
 	move_and_slide()
+	if position.x < 0:
+		position.x = 0
+	if position.x > bounds.x:
+		position.x = bounds.x
+	
+
