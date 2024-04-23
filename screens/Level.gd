@@ -2,7 +2,7 @@ extends Control
 
 @export var song: Song
 @onready var projectile_controller: ProjectileController = $ProjectileController
-@onready var rhythm_bar: RhythmBar = $PlayerContainer/MarginContainer/Container/CharacterController/RhythmBar
+@onready var rhythm_bar: RhythmBar = $PlayerContainer/Container/CharacterController/RhythmBar
 
 var projectile = preload("res://scenes/Projectile.tscn")
 var converter = OsbConverter.new()

@@ -10,53 +10,40 @@ border_width_right = 5
 border_width_bottom = 5
 
 [node name="PlayerContainer" type="Panel"]
-offset_right = 1172.0
+offset_right = 810.0
 offset_bottom = 212.0
+size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lin5n")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -581.0
-offset_top = -101.0
-offset_right = 581.0
-offset_bottom = 101.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Container" type="Container" parent="MarginContainer"]
-custom_minimum_size = Vector2(1152, 192)
+[node name="Container" type="Container" parent="."]
+custom_minimum_size = Vector2(800, 192)
 layout_mode = 2
+offset_left = 5.0
+offset_top = 10.0
+offset_right = 805.0
+offset_bottom = 202.0
 
-[node name="Line2D" type="Line2D" parent="MarginContainer/Container"]
+[node name="Line2D" type="Line2D" parent="Container"]
 self_modulate = Color(1, 1, 1, 0.490196)
-points = PackedVector2Array(0, 32, 1152, 32)
+points = PackedVector2Array(0, 32, 800, 32)
 width = 5.0
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D2" type="Line2D" parent="MarginContainer/Container"]
+[node name="Line2D2" type="Line2D" parent="Container"]
 self_modulate = Color(1, 1, 1, 0.490196)
-points = PackedVector2Array(0, 96, 1152, 96)
+points = PackedVector2Array(0, 96, 800, 96)
 width = 5.0
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D3" type="Line2D" parent="MarginContainer/Container"]
+[node name="Line2D3" type="Line2D" parent="Container"]
 self_modulate = Color(1, 1, 1, 0.490196)
-points = PackedVector2Array(0, 160, 1152, 160)
+points = PackedVector2Array(0, 160, 800, 160)
 width = 5.0
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="CharacterController" parent="MarginContainer/Container" instance=ExtResource("1_hwmwl")]
-position = Vector2(576, 96)
+[node name="CharacterController" parent="Container" instance=ExtResource("1_hwmwl")]
+position = Vector2(400, 96)
 INITIAL_Y = 96
