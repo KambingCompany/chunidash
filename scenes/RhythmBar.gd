@@ -50,7 +50,7 @@ func handle_input():
 		emit_signal("note_judged", Judgement.PERFECT)
 	first.queue_free()
 
-func _input(event: InputEvent):
+func _unhandled_key_input(event: InputEvent):
 	if event is InputEventKey and event.pressed:
 		var key_event: InputEventKey = event
 		if key_event.keycode & KEY_CODE_MASK:
