@@ -16,10 +16,11 @@ const note = preload("res://scenes/Note.tscn")
 
 var queue: Array[Note]
 
-const PERFECT_WINDOW = 33.33
-const GREAT_WINDOW = 50.0
-const GOOD_WINDOW = 66.67
-const MISS_WINDOW = 100.0
+const ONE_FRAME = 1000.0 / 60.0
+const PERFECT_WINDOW = ONE_FRAME * 3
+const GREAT_WINDOW = ONE_FRAME * 5
+const GOOD_WINDOW = ONE_FRAME * 7
+const MISS_WINDOW = ONE_FRAME * 8
 const MS_WINDOW = 1000.0
 
 # Called when the node enters the scene tree for the first time.
@@ -30,9 +31,10 @@ func load(rhythm: Array[int]) -> void:
 		queue.append(n)
 
 func handle_input():
-	var first = queue.front()
-	if not first:
+	if len(queue) == 0:
 		return
+
+	var first = queue[0]
 	var delta = abs(current_time - first.time)
 	
 	if delta > MISS_WINDOW + 33: # + 1 frame
@@ -49,10 +51,14 @@ func handle_input():
 	else:
 		emit_signal("note_judged", Judgement.PERFECT)
 	first.queue_free()
+	queue.remove_at(0)
 
 func _unhandled_key_input(event: InputEvent):
 	if event is InputEventKey and event.pressed:
 		var key_event: InputEventKey = event
+		if key_event.keycode in [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT]:
+			return
+
 		if key_event.keycode & KEY_CODE_MASK:
 			handle_input()
 
