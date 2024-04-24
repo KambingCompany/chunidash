@@ -32,10 +32,12 @@ func _ready() -> void:
 	projectile_controller.command_queue = converter.parse_osb_to_projectiles(song.base_dir)
 	$AudioController.set_audio(song.audio)
 	$AudioController.start()
+	$AudioController.song_end.connect(_on_finish)
+	
 	rhythm_bar.load(song.rhythm)
 	# Reset game state on start
-	GameState.reset_game_state()
 	GameState.on_death.connect(on_player_death)
+	GameState.all_notes = len(song.rhythm)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,6 +52,9 @@ func _on_rhythm_bar_note_judged(judgement: int) -> void:
 		rhythm_bar.flash_color(Color.GREEN)
 	elif judgement == RhythmBar.Judgement.MISS:
 		rhythm_bar.flash_color(Color.RED)
+
+func _on_finish():
+	get_tree().change_scene_to_file("res://scenes/ResultScreen.tscn")
 
 func on_player_death() -> void:
 	pass

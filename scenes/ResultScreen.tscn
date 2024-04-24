@@ -1,0 +1,158 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3tut31ovpofj"]
+
+[ext_resource type="Script" path="res://scenes/ResultScreen.gd" id="1_fpoto"]
+[ext_resource type="Script" path="res://scenes/ui/Retry.gd" id="2_enbut"]
+[ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_vl3q0"]
+[ext_resource type="PackedScene" uid="uid://2gyisctnoeky" path="res://screens/Level.tscn" id="4_80eri"]
+[ext_resource type="Script" path="res://scenes/ui/BackToMainMenu.gd" id="4_e5nwt"]
+[ext_resource type="PackedScene" uid="uid://bjue2dd6ue3v0" path="res://scenes/MainMenu.tscn" id="5_uenvx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvix1"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbdk3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+
+[node name="ResultScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvix1")
+script = ExtResource("1_fpoto")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="SongFinished" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 72
+text = "Song Finished"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="YourScore" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 40
+text = "Your Score"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 96
+text = "000000"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Miss" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 40
+text = "0 Miss
+"
+horizontal_alignment = 1
+
+[node name="Good" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 40
+text = "0 Good
+"
+horizontal_alignment = 1
+
+[node name="Great" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 40
+text = "0 Great
+"
+horizontal_alignment = 1
+
+[node name="Perfect" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 40
+text = "0 Perfect
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Combo" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 40
+text = "0 Combo
+"
+horizontal_alignment = 1
+
+[node name="HP" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 40
+text = "0% HP"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Retry" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbdk3")
+text = "Retry"
+script = ExtResource("2_enbut")
+target_scene = ExtResource("4_80eri")
+
+[node name="BackToMainMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vl3q0")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbdk3")
+text = "Back to Main Menu"
+script = ExtResource("4_e5nwt")
+target_scene = ExtResource("5_uenvx")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Retry" to="MarginContainer/VBoxContainer/HBoxContainer3/Retry" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/BackToMainMenu" to="MarginContainer/VBoxContainer/HBoxContainer3/BackToMainMenu" method="_on_pressed"]

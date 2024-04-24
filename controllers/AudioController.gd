@@ -3,10 +3,12 @@ extends Node
 @export var audio: AudioStream
 @export var current_time: int
 
+signal song_end
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AudioStreamPlayer.stream = audio
-
+	$AudioStreamPlayer.finished.connect(_on_finish)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,3 +30,6 @@ func toggle_pause():
 func set_audio(new_audio: AudioStream):
 	audio = new_audio
 	_ready()
+
+func _on_finish():
+	song_end.emit()

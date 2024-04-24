@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c8cnkdevacmh8" path="res://assets/chunidash_logo.png" id="1_eqarx"]
 [ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_cuolx"]
-[ext_resource type="Script" path="res://scenes/Play.gd" id="3_t35i4"]
+[ext_resource type="Script" path="res://scenes/ui/Play.gd" id="3_t35i4"]
 [ext_resource type="PackedScene" uid="uid://2gyisctnoeky" path="res://screens/Level.tscn" id="4_dycxo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvix1"]
