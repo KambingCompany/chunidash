@@ -22,13 +22,17 @@ func _process_commands():
 		if cmd.start_time > current_time:
 			break
 		
-		if current_time > cmd.end_time and cmd.executed:
+		if current_time >= cmd.end_time and cmd.executed:
 			command_queue.remove_at(i)
 			if is_instance_valid(cmd.object) and current_time > cmd.object.end_time:
 				cmd.object.queue_free()
 			i -= 1
 			continue
 		
+		if not is_instance_valid(cmd.object):
+			command_queue.remove_at(i)
+			continue
+
 		if not cmd.object.is_inside_tree():
 			add_child(cmd.object)
 			
