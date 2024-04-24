@@ -26,4 +26,4 @@ func _process(delta):
 	great.text = "Great %d" % GameState.great
 	perfect.text = "Perfect %d" % GameState.perfect
 	combo.text = "Combo %d" % GameState.combo
-	hp.text = "HP %.2f" % (GameState.boss_health / GameState.initial_boss_health)
+	hp.text = "HP %d" % GameState.health

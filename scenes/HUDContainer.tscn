@@ -100,9 +100,10 @@ show_percentage = false
 [node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/VBoxContainer/HFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+alignment = 2
 
 [node name="Combo" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer/BoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r33xp")
 theme_override_font_sizes/font_size = 48
-text = "0x"
+text = "000x"

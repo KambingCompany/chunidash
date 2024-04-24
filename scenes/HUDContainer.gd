@@ -18,7 +18,7 @@ func _ready():
 func _process(delta):
 	if GameState.alive:
 		score.text = "%010d" % GameState.score
-		combo.text = "x%d" % GameState.combo
+		combo.text = "x%03d" % GameState.combo
 		health.value = GameState.health
 		boss_health_bar.value = (GameState.boss_health / GameState.initial_boss_health) * 100
 
