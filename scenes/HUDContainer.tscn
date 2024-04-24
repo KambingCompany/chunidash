@@ -36,3 +36,7 @@ text = "Score:"
 [node name="Accuracy" type="Label" parent="MarginContainer/HFlowContainer/VBoxContainer"]
 layout_mode = 2
 text = "Accuracy: "
+
+[node name="Combo" type="Label" parent="MarginContainer/HFlowContainer/VBoxContainer"]
+layout_mode = 2
+text = "Combo: "
