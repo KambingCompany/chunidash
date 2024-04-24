@@ -1,8 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://buv6i3rjcas0a"]
+[gd_scene load_steps=6 format=3 uid="uid://buv6i3rjcas0a"]
 
 [ext_resource type="Script" path="res://scenes/HUDContainer.gd" id="1_oknhw"]
+[ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_r33xp"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gn40f"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pj0py"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0yyg"]
+bg_color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66doi"]
+bg_color = Color(0.054902, 0.6, 0.207843, 1)
 
 [node name="HUDContainer" type="PanelContainer"]
 anchors_preset = 15
@@ -10,33 +17,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_gn40f")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pj0py")
 script = ExtResource("1_oknhw")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
 [node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HFlowContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/HFlowContainer"]
 layout_mode = 2
 
-[node name="Health" type="Label" parent="MarginContainer/HFlowContainer/VBoxContainer"]
+[node name="Score" type="Label" parent="MarginContainer/HFlowContainer/BoxContainer"]
 layout_mode = 2
-text = "Health: "
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_r33xp")
+theme_override_font_sizes/font_size = 48
+text = "00000000"
 
-[node name="Score" type="Label" parent="MarginContainer/HFlowContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HFlowContainer"]
 layout_mode = 2
-text = "Score:"
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
-[node name="Accuracy" type="Label" parent="MarginContainer/HFlowContainer/VBoxContainer"]
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HFlowContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-text = "Accuracy: "
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_p0yyg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_66doi")
+value = 50.0
+show_percentage = false
 
-[node name="Combo" type="Label" parent="MarginContainer/HFlowContainer/VBoxContainer"]
+[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/HFlowContainer"]
 layout_mode = 2
-text = "Combo: "
+size_flags_horizontal = 8
+
+[node name="Combo" type="Label" parent="MarginContainer/HFlowContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r33xp")
+theme_override_font_sizes/font_size = 48
+text = "0x"

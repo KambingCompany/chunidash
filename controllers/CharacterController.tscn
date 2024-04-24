@@ -25,9 +25,9 @@ ROW_SWITCH_SPEED = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ftgo6")
 
+[node name="RhythmBar" parent="." instance=ExtResource("2_8o8ji")]
+position = Vector2(0, -600)
+
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("SphereMesh_cpevq")
 texture = SubResource("CurveXYZTexture_6jm4w")
-
-[node name="RhythmBar" parent="." instance=ExtResource("2_8o8ji")]
-position = Vector2(0, -600)

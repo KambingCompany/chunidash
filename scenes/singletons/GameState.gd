@@ -40,8 +40,10 @@ var good = 0
 var miss = 0
 
 func reset_game_state():
-	health = BASE_HEALTH
+	health = 50
 	score = 0
+	combo = 0
+	hit_count = 0
 	alive = true
 
 func _calculate_score(hit_value: int, combo: int, difficulty: Difficulty):
