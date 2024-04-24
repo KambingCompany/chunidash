@@ -6,6 +6,7 @@
 script = ExtResource("1_tvjei")
 
 [node name="Line2D" type="Line2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
 points = PackedVector2Array(0, 0, 0, 720)
 width = 2.5
 joint_mode = 2

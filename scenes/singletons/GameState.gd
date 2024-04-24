@@ -81,27 +81,31 @@ func _calculate_damage(judgement: RhythmBar.Judgement):
 	return (initial_boss_health / (0.9 * all_notes)) * accuracy_value
 
 func process_judgement(judgement: RhythmBar.Judgement):
+	var health_delta = 0
 	match judgement:
 		RhythmBar.Judgement.PERFECT:
-			health = clamp(health + 1.0, 0, BASE_HEALTH)
+			health_delta = 1
 			score += _calculate_score(300, combo, difficulty)
 			perfect += 1
 			combo += 1
 		RhythmBar.Judgement.GREAT:
-			health = clamp(health + 0.5, 0, BASE_HEALTH)
+			health_delta = 0.5
 			score += _calculate_score(100, combo, difficulty)
 			great += 1
 			combo += 1
 		RhythmBar.Judgement.GOOD:
-			health = clamp(health + 0.2, 0, BASE_HEALTH)
+			health_delta = 0.2
 			score += _calculate_score(50, combo, difficulty)
 			good += 1
 			combo += 1
 		RhythmBar.Judgement.MISS:
-			health = clamp(health - 0.1, 0, BASE_HEALTH)
+			health_delta = -0.1
 			miss += 1
 			combo = 0
-			
+	
+	if alive:
+		health = clamp(health + health_delta, 0, BASE_HEALTH)
+
 	boss_health -= _calculate_damage(judgement)
 	hit_count += 1
 	accuracy = (perfect + great * 0.75 + good * 0.5) / hit_count
@@ -111,7 +115,7 @@ func _process(delta):
 		on_death.emit()
 		alive = false
 	
-	if iframe <= 0 and colliding:
+	if iframe <= 0 and colliding and alive:
 		iframe = IFRAME_DURATION
 		match difficulty:
 			Difficulty.EASY:
