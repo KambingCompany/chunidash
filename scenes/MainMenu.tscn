@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjue2dd6ue3v0"]
+
+[ext_resource type="Texture2D" uid="uid://c8cnkdevacmh8" path="res://assets/chunidash_logo.png" id="1_eqarx"]
+[ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_cuolx"]
+[ext_resource type="Script" path="res://scenes/Play.gd" id="3_t35i4"]
+[ext_resource type="PackedScene" uid="uid://2gyisctnoeky" path="res://screens/Level.tscn" id="4_dycxo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvix1"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvix1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 96
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+texture = ExtResource("1_eqarx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Version" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cuolx")
+theme_override_font_sizes/font_size = 36
+text = "Beta Version"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="Play" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cuolx")
+theme_override_font_sizes/font_size = 64
+text = "Play"
+underline = 1
+script = ExtResource("3_t35i4")
+target_scene = ExtResource("4_dycxo")
+
+[node name="Exit" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cuolx")
+theme_override_font_sizes/font_size = 64
+text = "Exit"
+underline = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Play" to="MarginContainer/VBoxContainer/VBoxContainer2/Play" method="_on_pressed"]
