@@ -3,6 +3,7 @@ extends Control
 @export var song: Song
 @onready var projectile_controller: ProjectileController = $ProjectileController
 @onready var rhythm_bar: RhythmBar = $PlayerContainer/Container/CharacterController/RhythmBar
+@onready var character_controller: CharacterController = $PlayerContainer/Container/CharacterController
 
 var projectile = preload("res://scenes/Projectile.tscn")
 var converter = OsbConverter.new()
@@ -27,7 +28,11 @@ func _ready() -> void:
 	song.title = "carnation"
 	song.base_dir = "mopemope"
 	
+	# var can_move_toggle_rhythm: Array[int] = [3129, 8379, 16704]
+	# character_controller.load_can_move_toggle_rhythm(can_move_toggle_rhythm)
+	
 	rhythm_bar.note_judged.connect(_on_rhythm_bar_note_judged)
+	character_controller.can_move = true
 	
 	projectile_controller.command_queue = converter.parse_osb_to_projectiles(song.base_dir)
 	$AudioController.set_audio(song.audio)
@@ -43,6 +48,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	rhythm_bar.current_time = $AudioController.current_time
 	projectile_controller.current_time = $AudioController.current_time
+	character_controller.current_time = $AudioController.current_time
 
 
 func _on_rhythm_bar_note_judged(judgement: int) -> void:
