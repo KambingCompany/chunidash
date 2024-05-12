@@ -6,6 +6,7 @@ var object: Projectile
 var start_time: int
 var end_time: int
 var executed: bool = false
+var easing: OsbParser.Easing
 var duration: int = 0:
 	get:
 		return end_time - start_time
@@ -31,4 +32,12 @@ func effect(time: int):
 func get_duration_percentage(time: int):
 	if time > end_time or start_time == end_time:
 		return 1
-	return float(time - start_time) / float(duration)
+	var x = float(time - start_time) / float(duration)
+
+	match easing:
+		OsbParser.Easing.Linear:
+			return x
+		OsbParser.Easing.In:
+			return 1 - cos((x * PI) / 2);
+		OsbParser.Easing.Out:
+			return sin((x * PI) / 2);

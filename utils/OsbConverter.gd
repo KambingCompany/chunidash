@@ -116,6 +116,7 @@ func parse_osb_to_projectiles(base_dir: String):
 						float(cmd.params[1])
 					)
 
+			command.easing = cmd.easing
 			if command == null:
 				continue
 			commands.append(command)
