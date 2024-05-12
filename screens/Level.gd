@@ -31,9 +31,11 @@ func _ready() -> void:
 	$AudioController.set_audio(song.audio)
 	$AudioController.start()
 	$AudioController.song_end.connect(_on_finish)
+	$HUDContainer/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/BossLabel.text = song.boss_name
 	
 	rhythm_bar.load(song.rhythm)
 	# Reset game state on start
+	GameState.start_new_game(GameState.Difficulty.EASY)
 	GameState.current_song = song
 	GameState.on_death.connect(on_player_death)
 	GameState.all_notes = len(song.rhythm)
