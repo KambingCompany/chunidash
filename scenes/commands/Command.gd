@@ -15,7 +15,17 @@ func _init(object: Projectile, start_t: int, end_t: int):
 	start_time = start_t
 	end_time = end_t
 
-func execute(time: int):
+func execute(time: int) -> bool:
+	if executed and end_time < time:
+		return true
+
+	effect(time)
+
+	if time > end_time or start_time == end_time:
+		executed = true
+	return false
+
+func effect(time: int):
 	assert(false, "This is meant to be overriden")
 
 func get_duration_percentage(time: int):

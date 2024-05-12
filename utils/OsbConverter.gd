@@ -4,7 +4,7 @@ class_name OsbConverter
 
 var texture_cache: Dictionary = {}
 var collider_cache: Dictionary = {}
-const projectile_scene = preload("res://scenes/Projectile.tscn")
+const projectile_scene = preload ("res://scenes/Projectile.tscn")
 
 func create_projectile(commands: Array[Command], start_position: Vector2, is_ghost: bool, texture: Texture):
 	var p = projectile_scene.instantiate()
@@ -13,14 +13,27 @@ func create_projectile(commands: Array[Command], start_position: Vector2, is_gho
 	p.start_time = commands[0].start_time
 	p.texture = texture
 	p.end_time = 0
+
+	var has_first_move = false
 	
 	for command in commands:
+		# REPRODUCE OSU BUG
+		# why the fuck does osu do this !!!!!!!!!!!!!!!!!!!!!
+		# or storybrew
+		if not has_first_move:
+			if command is MoveY:
+				p.start_position = Vector2(p.start_position.x, command.start)
+			if command is MoveX:
+				p.start_position = Vector2(command.start, p.start_position.y)
+			if command is Move:
+				p.start_position = command.start
+			
+			has_first_move = (command is MoveY) or (command is MoveX) or (command is Move)
 		command.object = p
 
 	for cmd in commands:
 		p.end_time = max(cmd.end_time, p.end_time)
 	return p
-
 
 func parse_osb_to_projectiles(base_dir: String):
 	var songdir = "res://assets/songs/" + base_dir + "/"
@@ -63,8 +76,8 @@ func parse_osb_to_projectiles(base_dir: String):
 						
 					command = VectorScale.new(
 						null, cmd.startTime, cmd.endTime,
-						VectorHelper.OsuVector(int(cmd.params[0]), int(cmd.params[1])),
-						VectorHelper.OsuVector(int(cmd.params[2]), int(cmd.params[3]))
+						VectorHelper.OsuVectorScale(int(cmd.params[0]), int(cmd.params[1])),
+						VectorHelper.OsuVectorScale(int(cmd.params[2]), int(cmd.params[3]))
 					)
 				OsbParser.CommandType.Color:
 					if len(cmd.params) == 3:

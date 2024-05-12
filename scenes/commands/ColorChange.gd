@@ -10,7 +10,7 @@ func _init(object: Node2D, start_t: int, end_t: int, start_color: Color, end_col
 	self.start_color = start_color
 	self.end_color = end_color
 	
-func execute(time: int):
+func effect(time: int):
 	var percentage = get_duration_percentage(time)
 	var value = start_color + percentage * (end_color - start_color)
 	object.self_modulate = value

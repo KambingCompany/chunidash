@@ -14,7 +14,7 @@ func _init(
 	self.start = start
 	self.end = end
 
-func execute(time: int):
+func effect(time: int):
 	var percentage = get_duration_percentage(time)
 	var current = start + percentage * (end - start)
 	object.self_modulate.a = current

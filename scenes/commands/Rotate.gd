@@ -10,7 +10,7 @@ func _init(object: Node2D, start_t: int, end_t: int, start_rotation: float, end_
 	self.start_rotation = start_rotation
 	self.end_rotation = end_rotation
 
-func execute(time: int):
+func effect(time: int):
 	var percentage = get_duration_percentage(time)
 	var value = start_rotation + percentage * (end_rotation - start_rotation)
 	object.rotation = value
