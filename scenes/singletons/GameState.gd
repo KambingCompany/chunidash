@@ -17,6 +17,7 @@ const DIFFICULTY_MULTIPLIERS = {
 	Difficulty.HARD: 1.25,
 }
 
+var current_song: Song
 # Set this before each level start based on player's diff choice
 var difficulty = Difficulty.EASY
 

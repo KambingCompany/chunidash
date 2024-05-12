@@ -36,6 +36,8 @@ func create_projectile(commands: Array[Command], start_position: Vector2, is_gho
 	return p
 
 func parse_osb_to_projectiles(base_dir: String):
+	texture_cache = {}
+	collider_cache = {}
 	var songdir = "res://assets/songs/" + base_dir + "/"
 	var sprites = OsbParser.parse(songdir + "projectiles.osb")
 

@@ -8,7 +8,7 @@ var start_time: int
 var end_time: int
 
 func _ready() -> void:
-	self_modulate = Color(1, 1, 1, 0)
+	self_modulate = Color(1, 1, 1, 1)
 	self.position = start_position
 	if is_ghost:
 		return

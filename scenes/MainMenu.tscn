@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c8cnkdevacmh8" path="res://assets/chunidash_logo.png" id="1_eqarx"]
 [ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_cuolx"]
 [ext_resource type="Script" path="res://scenes/ui/Play.gd" id="3_t35i4"]
-[ext_resource type="PackedScene" uid="uid://2gyisctnoeky" path="res://screens/Level.tscn" id="4_dycxo"]
+[ext_resource type="Script" path="res://scenes/ui/TutorialButton.gd" id="4_8hdn4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvix1"]
 bg_color = Color(0, 0, 0, 1)
@@ -50,21 +50,32 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="Play" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_cuolx")
 theme_override_font_sizes/font_size = 64
 text = "Play"
 underline = 1
 script = ExtResource("3_t35i4")
-target_scene = ExtResource("4_dycxo")
+
+[node name="Tutorial" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cuolx")
+theme_override_font_sizes/font_size = 64
+text = "Tutorial"
+underline = 1
+script = ExtResource("4_8hdn4")
 
 [node name="Exit" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_cuolx")
 theme_override_font_sizes/font_size = 64
 text = "Exit"
 underline = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Play" to="MarginContainer/VBoxContainer/VBoxContainer2/Play" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Tutorial" to="MarginContainer/VBoxContainer/VBoxContainer2/Tutorial" method="_on_pressed"]

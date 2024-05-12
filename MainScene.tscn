@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfnv32cm4rhn"]
+[gd_scene load_steps=3 format=3 uid="uid://dgr4dp0vwiing"]
 
 [ext_resource type="PackedScene" uid="uid://bodo187lpv88r" path="res://controllers/CharacterController.tscn" id="1_birvu"]
 

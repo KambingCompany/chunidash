@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*res://scenes/singletons/GameState.gd"
+Game="*res://Game.tscn"
 
 [display]
 
@@ -53,3 +54,4 @@ down={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=2
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
