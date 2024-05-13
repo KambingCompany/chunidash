@@ -54,6 +54,9 @@ func _on_rhythm_bar_note_judged(judgement: int) -> void:
 	elif judgement == RhythmBar.Judgement.MISS:
 		rhythm_bar.flash_color(Color.RED)
 
+	if judgement != RhythmBar.Judgement.MISS:
+		$AudioController.play_sfx()
+
 func _on_finish():
 	Game.change_scene_to_packed(preload("res://scenes/ResultScreen.tscn"))
 

@@ -4,6 +4,7 @@ extends Node
 @export var current_time: int
 
 signal song_end
+const hit_hs = preload("res://assets/hit.ogg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _process(delta: float) -> void:
 	var time = $AudioStreamPlayer.get_playback_position() + AudioServer.get_time_since_last_mix()
 	time -= AudioServer.get_output_latency()
 	time *= 1000 # Convert to ms
+	time += UserSettings.offset
 
 	current_time = int(time)
 
@@ -33,3 +35,13 @@ func set_audio(new_audio: AudioStream):
 
 func _on_finish():
 	song_end.emit()
+
+func play_sfx():
+	var sfx_player = AudioStreamPlayer.new()
+	sfx_player.stream = hit_hs
+	sfx_player.bus = "SFX"
+	
+	add_child(sfx_player)
+	sfx_player.play()
+	await sfx_player.finished
+	sfx_player.queue_free()

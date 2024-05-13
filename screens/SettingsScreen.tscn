@@ -1,0 +1,205 @@
+[gd_scene load_steps=4 format=3 uid="uid://3massh1dqd7w"]
+
+[ext_resource type="Script" path="res://screens/SettingsScreen.gd" id="1_8ijwp"]
+[ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_5oreo"]
+[ext_resource type="Script" path="res://scenes/ui/BackToMainMenu.gd" id="3_hvgni"]
+
+[node name="SettingsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ijwp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VSplitContainer" type="VFlowContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/v_separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5oreo")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="Master Volume" type="MarginContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/VSplitContainer/Master Volume"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/Master Volume/VSplitContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5oreo")
+theme_override_font_sizes/font_size = 24
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="VFlowContainer" parent="MarginContainer/VSplitContainer/Master Volume/VSplitContainer"]
+layout_mode = 2
+
+[node name="Minus" type="Button" parent="MarginContainer/VSplitContainer/Master Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "-
+"
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/Master Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5oreo")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Plus" type="Button" parent="MarginContainer/VSplitContainer/Master Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "+"
+
+[node name="Music Volume" type="MarginContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/VSplitContainer/Music Volume"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/Music Volume/VSplitContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5oreo")
+theme_override_font_sizes/font_size = 24
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="VFlowContainer" parent="MarginContainer/VSplitContainer/Music Volume/VSplitContainer"]
+layout_mode = 2
+
+[node name="Minus" type="Button" parent="MarginContainer/VSplitContainer/Music Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "-
+"
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/Music Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5oreo")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Plus" type="Button" parent="MarginContainer/VSplitContainer/Music Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "+"
+
+[node name="SFX Volume" type="MarginContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/VSplitContainer/SFX Volume"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/SFX Volume/VSplitContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5oreo")
+theme_override_font_sizes/font_size = 24
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="VFlowContainer" parent="MarginContainer/VSplitContainer/SFX Volume/VSplitContainer"]
+layout_mode = 2
+
+[node name="Minus" type="Button" parent="MarginContainer/VSplitContainer/SFX Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "-
+"
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/SFX Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5oreo")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Plus" type="Button" parent="MarginContainer/VSplitContainer/SFX Volume/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "+"
+
+[node name="Offset" type="MarginContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/VSplitContainer/Offset"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/Offset/VSplitContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5oreo")
+theme_override_font_sizes/font_size = 24
+text = "Offset
+"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="VFlowContainer" parent="MarginContainer/VSplitContainer/Offset/VSplitContainer"]
+layout_mode = 2
+
+[node name="Minus" type="Button" parent="MarginContainer/VSplitContainer/Offset/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "-
+"
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/Offset/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5oreo")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Plus" type="Button" parent="MarginContainer/VSplitContainer/Offset/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "+"
+
+[node name="LinkButton" type="Button" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5oreo")
+theme_override_font_sizes/font_size = 32
+text = "Back to Main Menu"
+flat = true
+script = ExtResource("3_hvgni")
+
+[connection signal="pressed" from="MarginContainer/VSplitContainer/LinkButton" to="MarginContainer/VSplitContainer/LinkButton" method="_on_pressed"]
