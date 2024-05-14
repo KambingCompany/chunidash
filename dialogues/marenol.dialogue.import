@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://b5f8hbhpfgxyn"
+path="res://.godot/imported/marenol.dialogue-b267a71e43f0b43f837ebdb935ab78f6.tres"
+
+[deps]
+
+source_file="res://dialogues/marenol.dialogue"
+dest_files=["res://.godot/imported/marenol.dialogue-b267a71e43f0b43f837ebdb935ab78f6.tres"]
+
+[params]
+
+defaults=true

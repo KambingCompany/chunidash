@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://dcyt4rdtx83wq"
+path="res://.godot/imported/mopemope.dialogue-0c388b50e080dca863729388854fd104.tres"
+
+[deps]
+
+source_file="res://dialogues/mopemope.dialogue"
+dest_files=["res://.godot/imported/mopemope.dialogue-0c388b50e080dca863729388854fd104.tres"]
+
+[params]
+
+defaults=true

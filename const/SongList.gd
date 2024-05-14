@@ -17,7 +17,8 @@ static var songs: Array[Song] = [
 		preload("res://assets/songs/marenol/audio.mp3"),
 		"marenol",
 		[35126, 46269],
-		"Dikcy?"
+		"Dikcy?",
+		"marenol"
 	),
 	Song.new(
 		"LeaF", "Mopemope",
@@ -25,9 +26,9 @@ static var songs: Array[Song] = [
 		preload("res://assets/songs/mopemope/audio.mp3"),
 		"mopemope",
 		[],
-		"Memetius The Great"
+		"Memetius The Great",
+		"mopemope"
 	),
-
 ]
 
 static func getSongs() -> Array[Song]:

@@ -10,6 +10,7 @@ var commands: Array[Command]
 
 var projectile = preload ("res://scenes/Projectile.tscn")
 var converter = OsbConverter.new()
+var started = false
 
 func create_projectile(commands: Array[Command], start_position: Vector2, is_ghost: bool, texture: Texture):
 	var p = projectile.instantiate()
@@ -23,6 +24,10 @@ func create_projectile(commands: Array[Command], start_position: Vector2, is_gho
 	return p
 
 func _ready() -> void:
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	$Dialogue.start_dialogue(song.dialogue)
+
+func _start() -> void:
 	character_controller.load_can_move_toggle_rhythm(song.move_toggles)
 	rhythm_bar.note_judged.connect(_on_rhythm_bar_note_judged)
 
@@ -39,12 +44,14 @@ func _ready() -> void:
 	GameState.current_song = song
 	GameState.on_death.connect(on_player_death)
 	GameState.all_notes = len(song.rhythm)
+	started = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	rhythm_bar.current_time = $AudioController.current_time
-	projectile_controller.current_time = $AudioController.current_time
-	character_controller.current_time = $AudioController.current_time
+	if started:
+		rhythm_bar.current_time = $AudioController.current_time
+		projectile_controller.current_time = $AudioController.current_time
+		character_controller.current_time = $AudioController.current_time
 
 func _on_rhythm_bar_note_judged(judgement: int) -> void:
 	if judgement == RhythmBar.Judgement.GREAT:
@@ -62,3 +69,7 @@ func _on_finish():
 
 func on_player_death() -> void:
 	pass
+
+func _on_dialogue_ended(_resource: DialogueResource) -> void:
+	print("DIALOGUE END")
+	_start()
