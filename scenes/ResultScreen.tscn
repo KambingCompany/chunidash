@@ -143,7 +143,6 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_tbdk3")
 text = "Retry"
 script = ExtResource("2_enbut")
-target_scene = ExtResource("4_80eri")
 
 [node name="BackToMainMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -152,7 +151,6 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_tbdk3")
 text = "Back to Main Menu"
 script = ExtResource("4_e5nwt")
-target_scene = ExtResource("5_uenvx")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Retry" to="MarginContainer/VBoxContainer/HBoxContainer3/Retry" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/BackToMainMenu" to="MarginContainer/VBoxContainer/HBoxContainer3/BackToMainMenu" method="_on_pressed"]
