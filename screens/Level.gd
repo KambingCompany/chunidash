@@ -24,8 +24,12 @@ func create_projectile(commands: Array[Command], start_position: Vector2, is_gho
 	return p
 
 func _ready() -> void:
-	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
-	$Dialogue.start_dialogue(song.dialogue)
+	if song.dialogue:
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+		$Dialogue.start_dialogue(song.dialogue)
+	else:
+		$Dialogue.queue_free()
+		_start()
 
 func _start() -> void:
 	character_controller.load_can_move_toggle_rhythm(song.move_toggles)
@@ -71,5 +75,4 @@ func on_player_death() -> void:
 	pass
 
 func _on_dialogue_ended(_resource: DialogueResource) -> void:
-	print("DIALOGUE END")
 	_start()
