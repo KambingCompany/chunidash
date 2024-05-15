@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
-[ext_resource type="Texture2D" uid="uid://dow0flyf8g5m" path="res://assets/characters/dikcy.png" id="2_1snly"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_pqb87"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
@@ -127,9 +126,9 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="TextureRect" type="TextureRect" parent="Balloon/Panel/HBoxContainer/CharacterPanel/MarginContainer"]
+[node name="CharacterRect" type="TextureRect" parent="Balloon/Panel/HBoxContainer/CharacterPanel/MarginContainer"]
+texture_filter = 1
 layout_mode = 2
-texture = ExtResource("2_1snly")
 expand_mode = 4
 
 [node name="Dialogue" type="MarginContainer" parent="Balloon/Panel/HBoxContainer"]

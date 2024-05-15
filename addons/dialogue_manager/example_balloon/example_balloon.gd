@@ -10,6 +10,7 @@ extends CanvasLayer
 @onready var character_label: RichTextLabel = %CharacterLabel
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var character_sprite: TextureRect = %Balloon/Panel/HBoxContainer/CharacterPanel/MarginContainer/CharacterRect
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -95,12 +96,12 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
-
+	self.character_sprite.texture = Characters.get_character_sprite(self.dialogue_line.character)
 
 ## Go to the next line
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
-
+	self.character_sprite.texture = Characters.get_character_sprite(self.dialogue_line.character)
 
 ### Signals
 
