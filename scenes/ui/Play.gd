@@ -6,6 +6,6 @@ func _on_pressed():
 	print("Wee")
 	GameState.start_new_game(GameState.Difficulty.EASY)
 	var loading = loading_scene.instantiate()
-	loading.song = SongList.getSongs()[0]
+	loading.song = SongList.getSongs()[2]
 	
 	Game.set_screen(loading)

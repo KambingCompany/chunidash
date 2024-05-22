@@ -125,6 +125,8 @@ func _process(delta):
 				health -= 10
 			Difficulty.HARD:
 				health -= 15
+		health = max(health, 0)
+		Game.glow(health == 0)
 		
 	if iframe > 0:
 		iframe -= delta * 1000

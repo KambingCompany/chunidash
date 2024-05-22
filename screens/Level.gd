@@ -7,6 +7,9 @@ var commands: Array[Command]
 @onready var projectile_controller: ProjectileController = $ProjectileController
 @onready var rhythm_bar: RhythmBar = $PlayerContainer/Container/CharacterController/RhythmBar
 @onready var character_controller: CharacterController = $PlayerContainer/Container/CharacterController
+@onready var boss_container = $HUDContainer/MarginContainer/VBoxContainer/MarginContainer3/BossContainer
+@onready var random = RandomNumberGenerator.new()
+var orig_position
 
 var projectile = preload ("res://scenes/Projectile.tscn")
 var converter = OsbConverter.new()
@@ -32,6 +35,7 @@ func _ready() -> void:
 		_start()
 
 func _start() -> void:
+	orig_position = boss_container.position
 	character_controller.load_can_move_toggle_rhythm(song.move_toggles)
 	rhythm_bar.note_judged.connect(_on_rhythm_bar_note_judged)
 
@@ -40,7 +44,7 @@ func _start() -> void:
 	$AudioController.set_audio(song.audio)
 	$AudioController.start()
 	$AudioController.song_end.connect(_on_finish)
-	$HUDContainer/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/BossLabel.text = song.boss_name
+	$HUDContainer/MarginContainer/VBoxContainer/MarginContainer3/BossContainer/BossLabel.text = song.boss_name
 	
 	rhythm_bar.load(song.rhythm)
 	# Reset game state on start
@@ -67,6 +71,14 @@ func _on_rhythm_bar_note_judged(judgement: int) -> void:
 
 	if judgement != RhythmBar.Judgement.MISS:
 		$AudioController.play_sfx()
+		
+		var tween = create_tween()
+		var c = random.randi_range(5, 10)
+		tween.tween_property(boss_container, "position:x", c, 0.05).as_relative()
+		tween.tween_property(boss_container, "position:x", c * -2, 0.05).as_relative()
+		tween.tween_property(boss_container, "position:x", c * 2, 0.05).as_relative()
+		tween.tween_property(boss_container, "position:x", -c, 0.05).as_relative()
+		tween.tween_property(boss_container, "position", orig_position, 0.1)
 
 func _on_finish():
 	Game.change_scene_to_packed(preload("res://scenes/ResultScreen.tscn"))

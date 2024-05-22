@@ -1,6 +1,7 @@
 extends Node
 
 var current_scene: Node
+@onready var glow_control = $AttackedGlow
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,3 +29,14 @@ func _deferred_set_screen(node: Node):
 	current_scene = node
 	get_tree().root.add_child(node)
 	get_tree().current_scene = current_scene
+
+func glow(is_dead):
+	var tween = get_tree().create_tween()
+	var orig_color = Color(1, 1, 1, 0)
+	var target_color = Color(1, 1, 1, 1)
+	tween.tween_property(glow_control, "modulate", target_color, 0.25)
+	
+	if is_dead:
+		tween.tween_property(glow_control, "modulate", target_color, 1)
+	else:
+		tween.tween_property(glow_control, "modulate", orig_color, 0.25)

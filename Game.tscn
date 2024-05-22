@@ -1,6 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwwxgvard13m0"]
+[gd_scene load_steps=10 format=3 uid="uid://dwwxgvard13m0"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_eumqm"]
 
+[sub_resource type="Gradient" id="Gradient_bel3f"]
+colors = PackedColorArray(0.392157, 0, 0, 1, 0.392157, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bgd65"]
+gradient = SubResource("Gradient_bel3f")
+fill_to = Vector2(0, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_njrqd"]
+colors = PackedColorArray(0.392157, 0, 0, 1, 0.392157, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0y8ss"]
+gradient = SubResource("Gradient_njrqd")
+fill_from = Vector2(1, 0.1)
+fill_to = Vector2(0.9, 0.1)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_0co5v"]
+colors = PackedColorArray(0.392157, 0, 0, 1, 0.392157, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_acptp"]
+gradient = SubResource("Gradient_0co5v")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0.9)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_uflqc"]
+colors = PackedColorArray(0.392157, 0, 0, 1, 0.392157, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fn7qb"]
+gradient = SubResource("Gradient_uflqc")
+fill_to = Vector2(0.1, 0)
+metadata/_snap_enabled = true
+
 [node name="Game" type="Node"]
 script = ExtResource("1_eumqm")
+
+[node name="AttackedGlow" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 999
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="AttackedGlow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bgd65")
+
+[node name="TextureRect3" type="TextureRect" parent="AttackedGlow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0y8ss")
+
+[node name="TextureRect4" type="TextureRect" parent="AttackedGlow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_acptp")
+
+[node name="TextureRect2" type="TextureRect" parent="AttackedGlow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_fn7qb")
