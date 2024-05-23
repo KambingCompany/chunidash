@@ -29,6 +29,10 @@ func _deferred_set_screen(node: Node):
 	current_scene = node
 	get_tree().root.add_child(node)
 	get_tree().current_scene = current_scene
+	
+	if glow_control.modulate.a != 0:
+		var tween = get_tree().create_tween()
+		tween.tween_property(glow_control, "modulate", Color(1, 1, 1, 0), 0.25)
 
 func glow(is_dead):
 	var tween = get_tree().create_tween()
