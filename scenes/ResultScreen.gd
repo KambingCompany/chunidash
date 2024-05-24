@@ -25,5 +25,5 @@ func _process(delta):
 	good.text = "Good %d" % GameState.good
 	great.text = "Great %d" % GameState.great
 	perfect.text = "Perfect %d" % GameState.perfect
-	combo.text = "Combo %d" % GameState.combo
+	combo.text = "Combo %d" % GameState.max_combo
 	hp.text = "HP %d" % GameState.health
