@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SaveManager="*res://scenes/singletons/SaveManager.gd"
 GameState="*res://scenes/singletons/GameState.gd"
 Game="*res://Game.tscn"
 UserSettings="*res://scenes/singletons/UserSettings.gd"

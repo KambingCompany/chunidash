@@ -11,6 +11,7 @@ static var tutorial: Song = Song.new(
 	"",
 	"prologue",
 	preload("res://assets/dialogue_backgrounds/prologue.png"),
+	-1
 )
 
 static var songs: Array[Song] = [
@@ -23,6 +24,7 @@ static var songs: Array[Song] = [
 		"Memetius The Great",
 		"mopemope",
 		preload("res://assets/dialogue_backgrounds/mopemope.png"),
+		0
 	),
 	Song.new(
 		"LeaF", "MARENOL",
@@ -33,6 +35,7 @@ static var songs: Array[Song] = [
 		"Dikcy?",
 		"marenol",
 		preload("res://assets/songs/mopemope/evilbg.png"),
+		1
 	),
 	Song.new(
 		"LeaF", "I",
@@ -55,12 +58,11 @@ static var songs: Array[Song] = [
 131082, 131428,
 131535, 131880,],
 		"Prometheus",
-		"mopemope"
+		"mopemope",
+		null,
+		2
 	),
 ]
 
 static func getSongs() -> Array[Song]:
-	return songs
-
-static func getUnlockedSongs() -> Array[Song]:
 	return songs
