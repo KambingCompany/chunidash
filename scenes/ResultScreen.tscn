@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/ui/Retry.gd" id="2_enbut"]
 [ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_vl3q0"]
 [ext_resource type="Theme" uid="uid://cl8o7ubwwtwxf" path="res://scenes/ui/ButtonTheme.tres" id="3_hpbk4"]
-[ext_resource type="Script" path="res://scenes/ui/BackToMainMenu.gd" id="4_e5nwt"]
+[ext_resource type="Script" path="res://scenes/ui/BackToLevelSelect.gd" id="5_udium"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvix1"]
 bg_color = Color(0, 0, 0, 1)
@@ -130,12 +130,12 @@ theme_override_font_sizes/font_size = 48
 text = "Retry"
 script = ExtResource("2_enbut")
 
-[node name="BackToMainMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="BackToLevelSelect" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme = ExtResource("3_hpbk4")
 theme_override_font_sizes/font_size = 48
 text = "Back to Level Select"
-script = ExtResource("4_e5nwt")
+script = ExtResource("5_udium")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Retry" to="MarginContainer/VBoxContainer/HBoxContainer3/Retry" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/BackToMainMenu" to="MarginContainer/VBoxContainer/HBoxContainer3/BackToMainMenu" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/BackToLevelSelect" to="MarginContainer/VBoxContainer/HBoxContainer3/BackToLevelSelect" method="_on_pressed"]
