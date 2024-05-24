@@ -45,7 +45,6 @@ func _start() -> void:
 	character_controller.can_move = true
 	projectile_controller.command_queue = commands
 	$AudioController.set_audio(song.audio)
-	$AudioController.start()
 	$AudioController.song_end.connect(_on_finish)
 	$HUDContainer/MarginContainer/VBoxContainer/MarginContainer3/BossContainer/BossLabel.text = song.boss_name
 	
@@ -56,6 +55,9 @@ func _start() -> void:
 	GameState.current_song = song
 	GameState.on_death.connect(on_player_death)
 	GameState.all_notes = len(song.rhythm)
+	
+	await get_tree().create_timer(1).timeout
+	$AudioController.start()
 	started = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -103,3 +105,7 @@ func on_player_death() -> void:
 
 func _on_dialogue_ended(_resource: DialogueResource) -> void:
 	_start()
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.
