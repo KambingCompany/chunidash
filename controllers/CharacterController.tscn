@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bodo187lpv88r"]
+[gd_scene load_steps=8 format=3 uid="uid://bodo187lpv88r"]
 
 [ext_resource type="Script" path="res://controllers/CharacterController.gd" id="1_u04ep"]
 [ext_resource type="PackedScene" uid="uid://c8bchs71bkwxr" path="res://scenes/RhythmBar.tscn" id="2_8o8ji"]
+[ext_resource type="Texture2D" uid="uid://chv0x2rvlv721" path="res://assets/characters/dicky_back.png" id="3_00vsq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ftgo6"]
 radius = 8.0
@@ -31,3 +32,6 @@ position = Vector2(0, -600)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("SphereMesh_cpevq")
 texture = SubResource("CurveXYZTexture_6jm4w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_00vsq")
