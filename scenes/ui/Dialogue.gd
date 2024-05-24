@@ -4,10 +4,7 @@ extends Control
 func start_dialogue(dialogue_file_name):
 	var dialogue_file = load("res://dialogues/" + dialogue_file_name + ".dialogue")
 	
-	var background_image: Texture2D = null
-	for image in DirAccess.get_files_at("res://assets/dialogue_backgrounds"):
-		if image.begins_with(dialogue_file_name) and not ".import" in image:
-			background_image = load("res://assets/dialogue_backgrounds/" + image)
+	var background_image: Texture2D = DialogueBackgrounds.BACKGROUNDS.get(dialogue_file_name)
 	
 	DialogueManager.dialogue_ended.connect(_on_dialog_ended)
 	DialogueManager.show_dialogue_balloon(dialogue_file, dialogue_file_name)

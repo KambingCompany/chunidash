@@ -24,6 +24,7 @@ Game="*res://Game.tscn"
 UserSettings="*res://scenes/singletons/UserSettings.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Characters="*res://scenes/singletons/Characters.gd"
+DialogueBackgrounds="*res://scenes/singletons/DialogueBackgrounds.gd"
 
 [display]
 
