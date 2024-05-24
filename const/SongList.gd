@@ -10,6 +10,7 @@ static var tutorial: Song = Song.new(
 	[],
 	"",
 	"prologue",
+	[],
 	preload("res://assets/dialogue_backgrounds/prologue.png"),
 )
 
@@ -22,6 +23,7 @@ static var songs: Array[Song] = [
 		[],
 		"Memetius The Great",
 		"mopemope",
+		[],
 		preload("res://assets/dialogue_backgrounds/mopemope.png"),
 	),
 	Song.new(
@@ -32,6 +34,7 @@ static var songs: Array[Song] = [
 		[35126, 46269],
 		"Dikcy?",
 		"marenol",
+		[],
 		preload("res://assets/songs/mopemope/evilbg.png"),
 	),
 	Song.new(
@@ -55,7 +58,22 @@ static var songs: Array[Song] = [
 131082, 131428,
 131535, 131880,],
 		"Prometheus",
-		"mopemope"
+		"mopemope",
+		[21850, 22122, 22872, 23282, 23656, 24202, 26201, 26474, 119766, 120228,
+120655, 121116,
+121331, 121791,
+122649, 123110,
+123323, 123554,
+123991, 124452,
+125952, 126297,
+126619, 126964,
+127072, 127417,
+128010, 128414,
+128628, 129320,
+129533, 129880,
+130201, 130600,
+131082, 131428,
+131535, 131880,]
 	),
 ]
 

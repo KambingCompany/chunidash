@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://2gyisctnoeky"]
+[gd_scene load_steps=10 format=3 uid="uid://2gyisctnoeky"]
 
 [ext_resource type="Script" path="res://screens/Level.gd" id="1_pmarg"]
 [ext_resource type="PackedScene" uid="uid://balihlspmape" path="res://controllers/AudioController.tscn" id="2_i3x5q"]
+[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="2_nmgf6"]
 [ext_resource type="PackedScene" uid="uid://cmolvyfrydie0" path="res://controllers/ProjectileController.tscn" id="4_4je6g"]
 [ext_resource type="PackedScene" uid="uid://br13ye1sj0lie" path="res://scenes/PlayerContainer.tscn" id="5_l3y2x"]
 [ext_resource type="PackedScene" uid="uid://buv6i3rjcas0a" path="res://scenes/HUDContainer.tscn" id="5_oryv4"]
@@ -9,6 +10,16 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bffga"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7dn6"]
+resource_local_to_scene = true
+shader = ExtResource("2_nmgf6")
+shader_parameter/enable = false
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.347
+shader_parameter/aperture_grille_rate = 0.4
+shader_parameter/rf_switch_esque_blur = 1.0
+shader_parameter/white_noise_rate = 0.0
 
 [node name="Level" type="Control"]
 layout_mode = 3
@@ -56,3 +67,10 @@ grow_vertical = 0
 [node name="Dialogue" parent="." instance=ExtResource("6_bcu3m")]
 z_index = 100
 layout_mode = 1
+
+[node name="CRT" type="ColorRect" parent="."]
+z_index = 999
+material = SubResource("ShaderMaterial_w7dn6")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
