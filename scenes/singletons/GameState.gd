@@ -33,6 +33,7 @@ var colliding: bool
 var hit_count = 0
 var all_notes = 0
 var combo = 0
+var max_combo = 0
 
 # Judgements
 # TODO: Refactor (should this be separate variables or a dictionary?)
@@ -89,16 +90,19 @@ func process_judgement(judgement: RhythmBar.Judgement):
 			score += _calculate_score(300, combo, difficulty)
 			perfect += 1
 			combo += 1
+			max_combo = max(max_combo, combo)
 		RhythmBar.Judgement.GREAT:
 			health_delta = 0.5
 			score += _calculate_score(100, combo, difficulty)
 			great += 1
 			combo += 1
+			max_combo = max(max_combo, combo)
 		RhythmBar.Judgement.GOOD:
 			health_delta = 0.2
 			score += _calculate_score(50, combo, difficulty)
 			good += 1
 			combo += 1
+			max_combo = max(max_combo, combo)
 		RhythmBar.Judgement.MISS:
 			health_delta = -0.1
 			miss += 1

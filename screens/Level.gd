@@ -9,11 +9,14 @@ var commands: Array[Command]
 @onready var character_controller: CharacterController = $PlayerContainer/Container/CharacterController
 @onready var boss_container = $HUDContainer/MarginContainer/VBoxContainer/MarginContainer3/BossContainer
 @onready var random = RandomNumberGenerator.new()
+@onready var CRT = $CRT
 var orig_position
 
 var projectile = preload ("res://scenes/Projectile.tscn")
 var converter = OsbConverter.new()
 var started = false
+var crt_on = false
+var crt_toggle_rhythm: Array[int]
 
 func create_projectile(commands: Array[Command], start_position: Vector2, is_ghost: bool, texture: Texture):
 	var p = projectile.instantiate()
@@ -47,6 +50,7 @@ func _start() -> void:
 	$HUDContainer/MarginContainer/VBoxContainer/MarginContainer3/BossContainer/BossLabel.text = song.boss_name
 	
 	rhythm_bar.load(song.rhythm)
+	crt_toggle_rhythm.assign(Array(song.crt_toggles)) 
 	# Reset game state on start
 	GameState.start_new_game(GameState.Difficulty.EASY)
 	GameState.current_song = song
@@ -60,6 +64,17 @@ func _process(delta: float) -> void:
 		rhythm_bar.current_time = $AudioController.current_time
 		projectile_controller.current_time = $AudioController.current_time
 		character_controller.current_time = $AudioController.current_time
+		_check_crt_toggle()
+		
+func _check_crt_toggle() -> void:
+	if len(crt_toggle_rhythm) == 0:
+		return
+	var current_time = $AudioController.current_time
+	var first = crt_toggle_rhythm[0]
+	if current_time >= first:
+		crt_on = not crt_on
+		CRT.material.set_shader_parameter("enable", crt_on)
+		crt_toggle_rhythm.remove_at(0)
 
 func _on_rhythm_bar_note_judged(judgement: int) -> void:
 	if judgement == RhythmBar.Judgement.GREAT:
