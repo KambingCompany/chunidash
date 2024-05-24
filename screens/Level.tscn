@@ -51,6 +51,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bffga")
 layout_mode = 1
 
 [node name="PlayerContainer" parent="." instance=ExtResource("5_l3y2x")]
+z_index = 20
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
