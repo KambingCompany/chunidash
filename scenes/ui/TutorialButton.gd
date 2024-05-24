@@ -1,4 +1,4 @@
-extends LinkButton
+extends Button
 
 var loading_screen = preload("res://screens/LoadingScreen.tscn")
 

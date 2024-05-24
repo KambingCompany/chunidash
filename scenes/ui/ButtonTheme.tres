@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cl8o7ubwwtwxf"]
+
+[ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="1_dbl0k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqfsl"]
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktf1g"]
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uf71o"]
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_dbl0k")
+Button/styles/focus = SubResource("StyleBoxFlat_eqfsl")
+Button/styles/hover = SubResource("StyleBoxFlat_ktf1g")
+Button/styles/normal = SubResource("StyleBoxFlat_uf71o")
+Button/styles/pressed = null

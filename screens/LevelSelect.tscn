@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy6l25dp13tpa"]
+
+[ext_resource type="Script" path="res://screens/LevelSelect.gd" id="1_loyfb"]
+[ext_resource type="Theme" uid="uid://cl8o7ubwwtwxf" path="res://scenes/ui/ButtonTheme.tres" id="2_36pps"]
+[ext_resource type="Texture2D" uid="uid://c8cnkdevacmh8" path="res://assets/chunidash_logo.png" id="2_41j5l"]
+
+[sub_resource type="GDScript" id="GDScript_5wbcj"]
+resource_name = "Back"
+script/source = "extends Button
+
+var main_menu = preload(\"res://scenes/MainMenu.tscn\")
+
+func _on_pressed():
+	Game.set_screen(main_menu.instantiate())
+"
+
+[node name="LevelSelect" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_loyfb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(224, 48)
+layout_mode = 2
+texture = ExtResource("2_41j5l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_36pps")
+theme_override_font_sizes/font_size = 32
+text = "Back To Main Menu"
+script = SubResource("GDScript_5wbcj")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" method="_on_pressed"]
