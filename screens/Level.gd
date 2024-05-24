@@ -73,12 +73,10 @@ func _on_rhythm_bar_note_judged(judgement: int) -> void:
 		$AudioController.play_sfx()
 		
 		var tween = create_tween()
-		var c = random.randi_range(5, 10)
-		tween.tween_property(boss_container, "position:x", c, 0.05).as_relative()
-		tween.tween_property(boss_container, "position:x", c * -2, 0.05).as_relative()
-		tween.tween_property(boss_container, "position:x", c * 2, 0.05).as_relative()
-		tween.tween_property(boss_container, "position:x", -c, 0.05).as_relative()
-		tween.tween_property(boss_container, "position", orig_position, 0.1)
+		var c = random.randi_range(2, 5)
+		tween.tween_property(boss_container, "position:x", c, 0.025).as_relative()
+		tween.tween_property(boss_container, "position:x", c * -1.1, 0.025).as_relative()
+		tween.tween_property(boss_container, "position", orig_position, 0.25)
 
 func _on_finish():
 	Game.change_scene_to_packed(preload("res://scenes/ResultScreen.tscn"))
