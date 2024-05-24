@@ -10,8 +10,11 @@ class_name Song
 @export var boss_name: String
 @export var dialogue: String
 @export var crt_toggles: PackedInt32Array
+@export var level_image: Texture2D
 
 func _init(artist = "", title = "", rhythm = [], audio = null, base_dir = "", move_toggles = [], boss_name = "", dialogue = "", crt_toggles = []) -> void:
+
+func _init(artist = "", title = "", rhythm = [], audio = null, base_dir = "", move_toggles = [], boss_name = "", dialogue = "", crt_toggles = [], level_image = null) -> void:
 	self.artist = artist
 	self.title = title
 	self.rhythm = rhythm
@@ -21,3 +24,4 @@ func _init(artist = "", title = "", rhythm = [], audio = null, base_dir = "", mo
 	self.boss_name = boss_name
 	self.dialogue = dialogue
 	self.crt_toggles = crt_toggles
+	self.level_image = level_image

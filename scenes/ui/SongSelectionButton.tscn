@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://ev1vo6fhshs1"]
+
+[ext_resource type="Script" path="res://scenes/ui/SongSelectionButton.gd" id="1_34bjq"]
+[ext_resource type="Texture2D" uid="uid://dafxss3ae65bp" path="res://assets/dialogue_backgrounds/mopemope.png" id="1_fmi0v"]
+[ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="1_tfp7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8b4po"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7xo6"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_bottom_right = 8
+
+[sub_resource type="Theme" id="Theme_oxpst"]
+Button/fonts/font = ExtResource("1_tfp7s")
+Button/styles/focus = SubResource("StyleBoxFlat_8b4po")
+Button/styles/hover = SubResource("StyleBoxFlat_8b4po")
+Button/styles/normal = SubResource("StyleBoxFlat_b7xo6")
+Button/styles/pressed = SubResource("StyleBoxFlat_8b4po")
+
+[node name="SongSelectionButton" type="Button"]
+clip_contents = true
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_oxpst")
+theme_override_font_sizes/font_size = 24
+text = "LeaF - Mopemope"
+script = ExtResource("1_34bjq")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_fmi0v")
+expand_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.588235)
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

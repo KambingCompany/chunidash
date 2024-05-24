@@ -1,26 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3tut31ovpofj"]
+[gd_scene load_steps=7 format=3 uid="uid://d3tut31ovpofj"]
 
 [ext_resource type="Script" path="res://scenes/ResultScreen.gd" id="1_fpoto"]
 [ext_resource type="Script" path="res://scenes/ui/Retry.gd" id="2_enbut"]
 [ext_resource type="FontFile" uid="uid://b2a47xknj1yrj" path="res://assets/fonts/VT323-Regular.ttf" id="2_vl3q0"]
-[ext_resource type="PackedScene" uid="uid://2gyisctnoeky" path="res://screens/Level.tscn" id="4_80eri"]
+[ext_resource type="Theme" uid="uid://cl8o7ubwwtwxf" path="res://scenes/ui/ButtonTheme.tres" id="3_hpbk4"]
 [ext_resource type="Script" path="res://scenes/ui/BackToMainMenu.gd" id="4_e5nwt"]
-[ext_resource type="PackedScene" uid="uid://bjue2dd6ue3v0" path="res://scenes/MainMenu.tscn" id="5_uenvx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvix1"]
 bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbdk3"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
 
 [node name="ResultScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -138,18 +125,16 @@ alignment = 1
 
 [node name="Retry" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vl3q0")
+theme = ExtResource("3_hpbk4")
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_tbdk3")
 text = "Retry"
 script = ExtResource("2_enbut")
 
 [node name="BackToMainMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vl3q0")
+theme = ExtResource("3_hpbk4")
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_tbdk3")
-text = "Back to Main Menu"
+text = "Back to Level Select"
 script = ExtResource("4_e5nwt")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Retry" to="MarginContainer/VBoxContainer/HBoxContainer3/Retry" method="_on_pressed"]

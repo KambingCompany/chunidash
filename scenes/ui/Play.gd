@@ -1,11 +1,6 @@
-extends LinkButton
+extends Button
 
-var loading_scene = preload("res://screens/LoadingScreen.tscn")
+@onready var level_select = load("res://screens/LevelSelect.tscn")
 
-func _on_pressed():
-	print("Wee")
-	GameState.start_new_game(GameState.Difficulty.EASY)
-	var loading = loading_scene.instantiate()
-	loading.song = SongList.getSongs()[2]
-	
-	Game.set_screen(loading)
+func _on_pressed():	
+	Game.set_screen(level_select.instantiate())

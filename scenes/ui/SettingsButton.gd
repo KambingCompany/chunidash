@@ -1,4 +1,4 @@
-extends LinkButton
+extends Button
 
 
 var settings_screen = preload("res://screens/SettingsScreen.tscn")

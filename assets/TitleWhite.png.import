@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dafxss3ae65bp"
-path="res://.godot/imported/mopemope.png-0ac4be8955ed543359503d50837cfc16.ctex"
+uid="uid://dgfv1spyrkg08"
+path="res://.godot/imported/TitleWhite.png-d9bbbe9723e12631252f20f35091fd92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dialogue_backgrounds/mopemope.png"
-dest_files=["res://.godot/imported/mopemope.png-0ac4be8955ed543359503d50837cfc16.ctex"]
+source_file="res://assets/TitleWhite.png"
+dest_files=["res://.godot/imported/TitleWhite.png-d9bbbe9723e12631252f20f35091fd92.ctex"]
 
 [params]
 
