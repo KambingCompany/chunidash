@@ -10,10 +10,11 @@ func _ready():
 	tutorial_button.song = SongList.tutorial
 	$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer.add_child(tutorial_button)
 	
-	for song in SongList.songs:
+	for song in SaveManager.get_unlocked_songs():
 		var song_button = song_button_template.instantiate()
-		song_button.title = song.artist + " - " + song.title
-		song_button.background = song.level_image
+		if song:
+			song_button.title = song.artist + " - " + song.title
+			song_button.background = song.level_image
 		song_button.song = song
 		$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer.add_child(song_button)
 		

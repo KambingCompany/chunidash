@@ -8,9 +8,13 @@ var loading_scene = preload("res://screens/LoadingScreen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Background.texture = background
-	self.text = title
-
+	if song:
+		$Background.texture = background
+		self.text = title
+	else:
+		self.text = "????????"
+		$Background.texture = null
+		self.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

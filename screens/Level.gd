@@ -94,6 +94,8 @@ func _on_rhythm_bar_note_judged(judgement: int) -> void:
 		tween.tween_property(boss_container, "position", orig_position, 0.25)
 
 func _on_finish():
+	if GameState.boss_health <= 0 and GameState.health > 0:
+		SaveManager.increment_progress(song)
 	Game.change_scene_to_packed(preload("res://scenes/ResultScreen.tscn"))
 
 func on_player_death() -> void:
